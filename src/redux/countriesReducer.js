@@ -5,17 +5,16 @@ import getAPI from "../api";
 //getting the data from the api
 export const fetchCountries = createAsyncThunk(
   "countries/fetchCountries",
-  async () => {
-    const response = await axios.get(getAPI());
-    console.log(response);
-    return response;
+  async (req) => {
+    const response = await axios.get(getAPI(req.type, req.name));
+    console.log(response.data);
+    return response.data;
   }
 );
 
 const initialState = {
   allCountries: [],
   isLoading: false,
-  filteredCountries: [],
 };
 
 const CountriesReducer = createSlice({
@@ -27,7 +26,7 @@ const CountriesReducer = createSlice({
     })
     builder.addCase(fetchCountries.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.allCountries.push(action.payload)
+        state.allCountries = action.payload
     })
     builder.addCase(fetchCountries.rejected, (state) => {
         state.isLoading = false;
@@ -36,4 +35,4 @@ const CountriesReducer = createSlice({
   }
 });
 
-export default CountriesReducer;
+export default CountriesReducer.reducer;
