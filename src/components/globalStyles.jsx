@@ -1,10 +1,17 @@
 import { createGlobalStyle } from "styled-components";
 
+export const lightTheme={
+    color: "hsl(0,0,97%)"
+}
+export const darkTheme = {
+  color: "hsl(207, 26%, 17%)",
+};
 export default createGlobalStyle`
     *{
         padding: 0;
         margin: 0;
         box-sizing: border-box;
+        transition: all 0.3s ease;
     }
     input, button, select{
         font-family: inherit;
@@ -14,7 +21,7 @@ export default createGlobalStyle`
         max-width: 100%;
     }
     body{
-        background-color: hsl(0, 0%, 97%);
+        background-color: ${props=> props.theme.color};
         font-family: 'Nunito Sans', sans-serif;
     }
     button, input, select{
@@ -38,6 +45,28 @@ export default createGlobalStyle`
         img{
             mix-blend-mode: multiply;
             margin: auto;
+        }
+    }
+    .dark-mode{
+        background-color: hsl(207, 26%, 17%);
+        .dark-element, .details-page button, .country-card{
+            background-color: hsl(209, 23%, 22%);
+            border: none;
+            box-shadow: none;
+            *{
+                color: white;
+            }
+        }
+        .details-page{
+            background-color: hsl(207, 26%, 17%);
+            color: white;
+            button{
+                color: white !important;
+            }
+        }
+        .select-field select {
+            background-color: hsl(209, 23%, 22%);
+            border: none;
         }
     }
 `;

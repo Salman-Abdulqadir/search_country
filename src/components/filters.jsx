@@ -24,17 +24,21 @@ const Filters = () => {
   };
   return (
     <StyledFilters className="flex">
-      <div className="input-field flex">
-        <BsSearch className="icon"/>
+      <div className="dark-element input-field flex">
+        <BsSearch className="icon" />
         <input
           id="input"
+          className="dark-element"
           onKeyUp={searchCountries}
           type="text"
           placeholder="Search for a country..."
         />
       </div>
-      <div className="select-field">
+      <div className="select-field dark-element">
         <select onChange={searchCountries}>
+          <option className="dark-element" value="" default disabled>
+            Filter by Region
+          </option>
           <option value="Africa">Africa</option>
           <option value="America">America</option>
           <option value="Asia">Asia</option>
@@ -62,7 +66,7 @@ const StyledFilters = styled.div`
       font-size: large;
       border: none;
       outline: none;
-      padding: 1rem 2rem;
+      padding: 0.75rem 2rem;
       width: 100%;
       flex: 1;
     }
@@ -70,7 +74,7 @@ const StyledFilters = styled.div`
   .select-field {
     padding: 0;
     select{
-        padding: 1rem 2rem;
+        padding: 0.75rem 2rem;
         font-size: large;
         outline: none;
     }

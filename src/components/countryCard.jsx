@@ -16,7 +16,7 @@ const Country = ({
 }) => {
   const dispatch = useDispatch();
   return (
-    <StyledCard>
+    <StyledCard className="country-card">
       <Link to={`/country/${name}`}>
         <div
           onClick={() => dispatch(setDetails(country))}
@@ -46,7 +46,7 @@ const StyledCard = styled.div`
   box-shadow: 10px 10px 20px rgba(232, 229, 229, 0.5);
   border-radius: 1rem;
   .image-wrapper {
-    height: 15rem;
+    height: 13rem;
     overflow: hidden;
     img {
         border-radius: 1rem;

@@ -9,15 +9,12 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 
-//global styles
-import GlobalStyles from "./components/globalStyles";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <GlobalStyles />
         <App />
       </Provider>
     </BrowserRouter>

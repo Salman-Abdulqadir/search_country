@@ -14,8 +14,8 @@ const CountryDetails = () => {
   if (country.length === 0) return navigate("/");
 
   return (
-    <StyledSection>
-      <button className="back-btn" onClick={() => navigate("/")}>
+    <StyledSection className="details-page">
+      <button className=" dark-element back-btn" onClick={() => navigate("/")}>
         <BsArrowLeft /> Back
       </button>
       <div className="country flex">
