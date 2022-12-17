@@ -4,11 +4,11 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import styled from "styled-components";
-import CountryCard from "./countryCard";
+import CountryCard from "../components/countryCard";
 import loader from "../images/loader.gif";
 
-const Countries = ({ allCountries }) => {
-  const { isLoading } = useSelector((state) => state.countries);
+const Home = () => {
+  const { isLoading, allCountries } = useSelector((state) => state.countries);
 
   //returnig and loader if the content is not loaded yet
   if (isLoading) {
@@ -29,6 +29,8 @@ const Countries = ({ allCountries }) => {
           population={country.population}
           region={country.region}
           imageUrl={country.flags.svg}
+          country={country}
+          id={index}
         />
       ))}
     </StyledSection>
@@ -42,4 +44,4 @@ const StyledSection = styled.section`
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   gap: 3rem;
 `;
-export default Countries;
+export default Home;

@@ -1,26 +1,43 @@
 import { useEffect } from "react";
 
 //redux
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { fetchCountries } from "./redux/countriesReducer";
 
 //components
 import Nav from "./components/nav";
-import Countries from "./components/Countries";
+import Filters from "./components/filters";
+
+//pages
+import Home from "./pages/home";
+import CountryDetails from "./pages/countryDetails"
+
+//router
+import { Routes, Route } from "react-router-dom";
 
 function App() {
-  const {allCountries} = useSelector((state) => state.countries);
   const dispatch = useDispatch();
 
   //loading the data when the page refreshes
-  useEffect(()=>{
-    dispatch(fetchCountries())
-  },[dispatch])
+  useEffect(() => {
+    dispatch(fetchCountries());
+  }, [dispatch]);
 
   return (
     <div className="App">
-      <Nav/>
-      <Countries allCountries={allCountries}/>
+      <Nav />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Filters />
+              <Home />
+            </>
+          }
+        />
+        <Route path="/country/:id" element={<CountryDetails/>}/>
+      </Routes>
     </div>
   );
 }

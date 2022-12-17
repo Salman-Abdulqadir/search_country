@@ -27,8 +27,9 @@ const CountriesReducer = createSlice({
         state.isLoading = false;
         state.allCountries = action.payload
     })
-    builder.addCase(fetchCountries.rejected, (state) => {
+    builder.addCase(fetchCountries.rejected, (state, action) => {
         state.isLoading = false;
+        state.allCountries = [];
         console.log("Fetching error!")
     })
   }
