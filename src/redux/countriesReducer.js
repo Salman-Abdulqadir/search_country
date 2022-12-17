@@ -5,9 +5,8 @@ import getAPI from "../api";
 //getting the data from the api
 export const fetchCountries = createAsyncThunk(
   "countries/fetchCountries",
-  async (req) => {
+  async (req={}) => {
     const response = await axios.get(getAPI(req.type, req.name));
-    console.log(response.data);
     return response.data;
   }
 );

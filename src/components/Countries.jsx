@@ -1,14 +1,14 @@
 import React from "react";
 
 // redux
-import { useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 
 import styled from "styled-components";
 import CountryCard from "./countryCard";
-import loader from "../images/loader.gif"
+import loader from "../images/loader.gif";
 
 const Countries = ({ allCountries }) => {
-  const {isLoading } = useSelector((state) => state.countries);
+  const { isLoading } = useSelector((state) => state.countries);
 
   //returnig and loader if the content is not loaded yet
   if (isLoading) {
@@ -19,14 +19,27 @@ const Countries = ({ allCountries }) => {
       </div>
     );
   }
-  return(
+  return (
     <StyledSection>
-        {/* {allCountries.map((country, index) => <CountryCard key={index} name={country.name.common}/>)} */}
+      {allCountries.map((country, index) => (
+        <CountryCard
+          key={index}
+          name={country.name.common}
+          capital={country.capital}
+          population={country.population}
+          region={country.region}
+          imageUrl={country.flags.svg}
+        />
+      ))}
     </StyledSection>
-  )
+  );
 };
 
 const StyledSection = styled.section`
-    
-`
+  width: 90%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: 3rem;
+`;
 export default Countries;

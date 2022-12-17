@@ -15,11 +15,19 @@ export default createGlobalStyle`
     }
     body{
         background-color: hsl(0, 0%, 97%);
+        font-family: 'Nunito Sans', sans-serif;
     }
     .flex{
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
         gap: 1rem;
+    }
+    .loading{
+        text-align: center;
+        img{
+            mix-blend-mode: multiply;
+            margin: auto;
+        }
     }
 `;
